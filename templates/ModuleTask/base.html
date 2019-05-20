@@ -1,0 +1,167 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link href="{%static 'vendors/css/flag-icon.min.css'%}" rel="stylesheet">
+    <link href="{%static 'vendors/css/font-awesome.min.css'%}" rel="stylesheet">
+    <link href="{%static 'vendors/css/simple-line-icons.min.css'%}" rel="stylesheet">
+
+    <!-- Main styles for this application -->
+    <link href="{%static 'css/style.css'%}" rel="stylesheet">
+    <link href="{%static 'css/submenu.css'%}" rel="stylesheet" />
+    <!-- Styles required by this views -->
+    <link href="{%static 'vendors/css/daterangepicker.min.css'%}" rel="stylesheet">
+    <link href="{%static 'vendors/css/gauge.min.css'%}" rel="stylesheet">
+    <link href="{%static 'vendors/css/toastr.min.css'%}" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script src="{% static 'vendors/js/coreui.min.js'%}"></script>
+    <!-- Bootstrap CSS -->
+    {%block title %}
+
+    {% endblock %}
+
+
+
+  <header class="app-header navbar">
+  <button class="navbar-toggler d-lg-none mr-auto" type="button" data-toggle="dropdown">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">
+  <img class="navbar-brand-full" src="{% static 'images/pos.png' %}" alt="CoreUI Logo" width="89" height="25">
+  <!-- <img class="navbar-brand-minimized" src="{% static 'images/pos.png' %}" alt="CoreUI Logo" width="30" height="30"> -->
+  </a>
+  <button class="navbar-toggler d-lg-down-none" type="button" data-toggle="dropdown">
+    <span class="navbar-toggler-icon"></span>
+    <div class="dropdown-menu dropdown-menu-left">
+    <!-- <div class="dropdown-header text-center">
+    <strong>Account</strong>
+    </div> -->
+    <a class="dropdown-item" href="#">
+    <i class="fa fa-bell-o"></i> Module Management
+    <!-- <span class="badge badge-info">42</span> -->
+    </a>
+    <a class="dropdown-item" href="#">
+    <i class="fa fa-envelope-o"></i> Task Management
+    <!-- <span class="badge badge-success">42</span> -->
+    </a>
+    <!-- <a class="dropdown-item" href="#">
+    <i class="fa fa-tasks"></i> Tasks
+    <span class="badge badge-danger">42</span>
+    </a>
+    <a class="dropdown-item" href="#">
+    <i class="fa fa-comments"></i> Comments
+    <span class="badge badge-warning">42</span>
+    </a>
+    <div class="dropdown-header text-center">
+    <strong>Settings</strong>
+    </div>
+    <a class="dropdown-item" href="#">
+    <i class="fa fa-user"></i> Profile</a>
+    <a class="dropdown-item" href="#">
+    <i class="fa fa-wrench"></i> Settings</a>
+    <a class="dropdown-item" href="#">
+    <i class="fa fa-usd"></i> Payments
+    <span class="badge badge-dark">42</span>
+    </a>
+    <a class="dropdown-item" href="#">
+    <i class="fa fa-file"></i> Projects
+    <span class="badge badge-primary">42</span>
+    </a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">
+    <i class="fa fa-shield"></i> Lock Account</a>
+    <a class="dropdown-item" href="#">
+    <i class="fa fa-lock"></i> Logout</a>
+    </div> -->
+  </button>
+  <!-- <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
+  <span class="navbar-toggler-icon"></span>
+  </button> -->
+  <ul class="nav navbar-nav ml-auto">
+  <li class="nav-item dropdown">
+  <a class="nav-link nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+  <img class="img-avatar" src="{% static 'images/pro.jpg' %}" alt="admin@bootstrapmaster.com">
+  </a>
+  <div class="dropdown-menu dropdown-menu-right">
+  <div class="dropdown-header text-center">
+  <strong>Account</strong>
+  </div>
+  <a class="dropdown-item" href="#">
+  <i class="fa fa-bell-o"></i> Updates
+  <span class="badge badge-info">42</span>
+  </a>
+  <a class="dropdown-item" href="#">
+  <i class="fa fa-envelope-o"></i> Messages
+  <span class="badge badge-success">42</span>
+  </a>
+  <a class="dropdown-item" href="#">
+  <i class="fa fa-tasks"></i> Tasks
+  <span class="badge badge-danger">42</span>
+  </a>
+  <a class="dropdown-item" href="#">
+  <i class="fa fa-comments"></i> Comments
+  <span class="badge badge-warning">42</span>
+  </a>
+  <div class="dropdown-header text-center">
+  <strong>Settings</strong>
+  </div>
+  <a class="dropdown-item" href="#">
+  <i class="fa fa-user"></i> Profile</a>
+  <a class="dropdown-item" href="#">
+  <i class="fa fa-wrench"></i> Settings</a>
+  <a class="dropdown-item" href="#">
+  <i class="fa fa-usd"></i> Payments
+  <span class="badge badge-dark">42</span>
+  </a>
+  <a class="dropdown-item" href="#">
+  <i class="fa fa-file"></i> Projects
+  <span class="badge badge-primary">42</span>
+  </a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="#">
+  <i class="fa fa-shield"></i> Lock Account</a>
+  <a class="dropdown-item" href="#">
+  <i class="fa fa-lock"></i> Logout</a>
+  </div>
+  </li>
+  </ul>
+
+  </header>
+  <style>
+    .app-footer mt-2{
+      position: absolute;
+      left: 0 ; right: 0; bottom: 0;
+      height:[footer-height]
+    }
+  </style>
+  </head>
+  <body>
+    {%block content%}
+    {%endblock content%}
+
+    <!-- Bootstrap and necessary plugins -->
+        <script src="{%static 'vendors/js/jquery.min.js'%}"></script>
+        <script src="{%static 'vendors/js/popper.min.js'%}"></script>
+        <script src="{%static 'vendors/js/bootstrap.min.js'%}"></script>
+        <script src="{%static 'vendors/js/pace.min.js'%}"></script>
+
+        <!-- CoreUI Pro main scripts -->
+
+        <script src="{%static 'js/app.js'%}"></script>
+
+        <!-- Plugins and scripts required by this views -->
+        <!--<script src="~/Content/vendors/js/toastr.min.js"></script>*@-->
+        <script src="{%static 'vendors/js/gauge.min.js'%}"></script>
+        <script src="{%static 'vendors/js/moment.min.js'%}"></script>
+        <script src="{%static 'vendors/js/daterangepicker.min.js'%}"></script>
+      <!--  <footer class="app-footer mt-2 " >
+          <span><a href="#">POS</a> © 2019</span>
+          <span class="ml-auto">Powered by <a href="www.google.com">eSecureSoft Technologies Ltd.</a></span>
+        </footer>-->
+  </body>
+</html>

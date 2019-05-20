@@ -1,0 +1,180 @@
+{% extends "ModuleTask/base.html" %}
+{%load static%}
+
+{%block title%}
+
+<!-- Icons -->
+
+
+
+
+    <script src="{% static 'vendors/js/toastr.min.js'%}"></script>
+    <h2 class="text-center" style="color:indianred">Edit Task</h2>
+{%endblock title%}
+
+{%block content%}
+<div class="card">
+      <div class="card-header">
+        <strong>View</strong>
+      </div>
+    <form action="TaskUpdate/" method="POST">
+      {%csrf_token%}
+    <div class="card-body">
+
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Name</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input class="form-control" type="text" name="element_name" id="element_name" value="{{Task.taskName}}" readonly>
+            </div>
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Order</label>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <input class="form-control" type="text" name="element_order" id="element_order" value="{{Task.order}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Code</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input class="form-control" type="text" name="element_code" id="element_code" value="{{Task.code}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Module</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input class="form-control" type="text" name="element_module" id="element_module" value="{{Task.moduleName}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Module Controller</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input placeholder="Url for module"class="form-control" type="text" name="text-input" id="text-input" value="" readonly>
+            </div>
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Controller</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input  placeholder="Url for task"class="form-control" type="text" name="text-input" id="text-input" value="" readonly>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row d-flex flex-space">
+            <label class="col-lg-2 col-md-3 col-sm-3 col-form-label" for="text-input">Task Event</label>
+            {%if Task.view_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="view_checked" id="element_task" name="element_task" checked>
+                    View
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="view_checked" id="element_task" name="element_task">
+                    View
+                </div>
+            {%endif%}
+
+            {%if Task.add_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="add_checked" id="element_task" name="element_task" checked>
+                    Add
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="add_checked" id="element_task" name="element_task">
+                    Add
+                </div>
+            {%endif%}
+
+            {%if Task.save_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="save_checked" id="element_task" name="element_task" checked>
+                    Save
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="save_checked" id="element_task" name="element_task">
+                    Save
+                </div>
+            {%endif%}
+
+            {%if Task.edit_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="edit_checked" id="element_task" name="element_task" checked>
+                    Edit
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="edit_checked" id="element_task" name="element_task">
+                    Edit
+                </div>
+            {%endif%}
+
+            {%if Task.delete_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="delete_checked" id="element_task" name="element_task" checked>
+                    Delete
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="delete_checked" id="element_task" name="element_task">
+                    Delete
+                </div>
+            {%endif%}
+
+            {%if Task.print_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="print_checked" id="element_task" name="element_task" checked>
+                    Print
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="print_checked" id="element_task" name="element_task">
+                    Print
+                </div>
+            {%endif%}
+
+            {%if Task.cancel_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="cancel_checked" id="element_task" name="element_task"checked>
+                    Cancel
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="cancel_checked" id="element_task" name="element_task">
+                    Cancel
+                </div>
+            {%endif%}
+
+            {%if Task.reset_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="reset_checked" id="element_task" name="element_task" checked>
+                    Reset
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="reset_checked" id="element_task" name="element_task">
+                    Reset
+                </div>
+            {%endif%}
+
+            {%if Task.find_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="find_checked" id="element_task" name="element_task" checked>
+                    Find
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="find_checked" id="element_task" name="element_task">
+                    Find
+                </div>
+            {%endif%}
+
+        </div>
+        <button type="submit" name="ChangeSubmit">Submit</button>
+        <button type="submit" name="NoSubmit">Cancel</button>
+        </form>
+  </div>
+
+
+{%endblock content%}

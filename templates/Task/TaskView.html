@@ -1,0 +1,177 @@
+{% extends "ModuleTask/base.html" %}
+{%load static%}
+
+{%block title%}
+
+<!-- Icons -->
+
+
+
+
+    <script src="{% static 'vendors/js/toastr.min.js'%}"></script>
+    <h2 class="text-center" style="color:indianred">View Task</h2>
+{%endblock title%}
+
+{%block content%}
+<div class="card">
+    <div class="card-header">
+        <strong>View</strong>
+    </div>
+    <div class="card-body">
+
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Name</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input class="form-control" type="text" name="text-input" id="text-input" value="{{Task.taskName}}" readonly>
+            </div>
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Order</label>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <input class="form-control" type="text" name="text-input" id="text-input" value="{{Task.order}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Code</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input class="form-control" type="text" name="text-input" id="text-input" value="{{Task.code}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Module</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input class="form-control" type="text" name="text-input" id="text-input" value="{{Task.moduleName}}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Module Controller</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input placeholder="Url for module"class="form-control" type="text" name="text-input" id="text-input" value="" readonly>
+            </div>
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Controller</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input  placeholder="Url for task"class="form-control" type="text" name="text-input" id="text-input" value="" readonly>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row d-flex flex-space">
+            <label class="col-lg-2 col-md-3 col-sm-3 col-form-label" for="text-input">Task Event</label>
+            {%if Task.view_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-view" checked disabled>
+                    View
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-view" disabled>
+                    View
+                </div>
+            {%endif%}
+
+            {%if Task.add_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-add" checked disabled>
+                    Add
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-add" disabled>
+                    Add
+                </div>
+            {%endif%}
+
+            {%if Task.save_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-save" checked disabled>
+                    Save
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-save" disabled>
+                    Save
+                </div>
+            {%endif%}
+
+            {%if Task.edit_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-edit" checked disabled>
+                    Edit
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-edit" disabled>
+                    Edit
+                </div>
+            {%endif%}
+
+            {%if Task.delete_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-delete" checked disabled>
+                    Delete
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-delete" disabled>
+                    Delete
+                </div>
+            {%endif%}
+
+            {%if Task.print_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-print" disabled>
+                    Print
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-print" disabled>
+                    Print
+                </div>
+            {%endif%}
+
+            {%if Task.cancel_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-cancel" checked disabled>
+                    Cancel
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-cancel" disabled>
+                    Cancel
+                </div>
+            {%endif%}
+
+            {%if Task.reset_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-reset" checked disabled>
+                    Reset
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-reset" disabled>
+                    Reset
+                </div>
+            {%endif%}
+
+            {%if Task.find_task%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-find" checked disabled>
+                    Find
+                </div>
+            {%else%}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="task-find" disabled>
+                    Find
+                </div>
+            {%endif%}
+
+        </div>
+
+
+  </div>
+
+
+{%endblock content%}

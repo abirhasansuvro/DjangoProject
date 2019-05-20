@@ -1,0 +1,81 @@
+{% extends "ModuleTask/base.html" %}
+
+{%block title%}
+
+<!-- Icons -->
+
+
+
+
+
+    <h2 class="text-center" style="color:indianred">New Role Creation</h2>
+{%endblock title%}
+
+{%block content%}
+
+<div class="card">
+  <div class="card-header">
+      <strong>Please fill up the following information</strong>
+  </div>
+      <div class="card-body">
+        <form action="RoleCreation/" method="POST">
+          <div class="form-group row mb-3">
+              <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Role Name</label>
+              <div class="col-lg-3 col-md-4 col-sm-4">
+
+                  <input type="text" class = "form-control name="role_name" id="role_name" value="" placeholder = "Text">
+              </div>
+          </div>
+
+      </div>
+
+      <div class="form-group row">
+          <label class="col-lg-2 col-md-3 col-sm-3 col-form-label" for="text-input">Task Event</label>
+          <div class="col-lg-1 col-md-1 col-sm-1">
+              <input type="checkbox" name="" id="is-task-view"class="form-check-input">View</input>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1">
+              <input type="checkbox" name="" id="is-task-view"class="form-check-input">Add</input>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1">
+              <input type="checkbox" name="" id="is-task-view"class="form-check-input">Save</input>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1">
+              <input type="checkbox" name="" id="is-task-view"class="form-check-input">Edit</input>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1">
+              <input type="checkbox" name="" id="is-task-view"class="form-check-input">Delete</input>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1">
+              <input type="checkbox" name="" id="is-task-view"class="form-check-input">Print</input>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1">
+              <input type="checkbox" name="" id="is-task-view"class="form-check-input">Cancel</input>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1">
+              <input type="checkbox" name="" id="is-task-view"class="form-check-input">Reset</input>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1">
+              <input type="checkbox" name="" id="is-task-view"class="form-check-input">Find</input>
+          </div>
+      </div>
+
+
+      </form>
+
+
+      <div class="card-footer">
+          <button type="submit" class="submit btn btn-sm btn-primary">
+              <i class="fa fa-dot-circle-o"></i> Submit
+          </button>
+
+
+          <button type="reset" class="reset btn btn-sm btn-danger">
+              <i class="fa fa-ban"></i> Reset
+          </button>
+      </div>
+
+
+</div>
+
+{%endblock content%}

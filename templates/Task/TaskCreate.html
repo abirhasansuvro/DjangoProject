@@ -1,0 +1,116 @@
+{% extends "ModuleTask/base.html" %}
+{%load static%}
+
+{%block title%}
+
+<!-- Icons -->
+
+
+
+
+    <script src="{% static 'vendors/js/toastr.min.js'%}"></script>
+    <h2 class="text-center" style="color:indianred">Create Task</h2>
+{%endblock title%}
+
+{%block content%}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <strong>Please fill up the following information</strong>
+    </div>
+    <form method="POST">
+
+    <div class="card-body">
+
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Name</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+
+                <input id="text-input" type="text" name="text-input" class = "form-control", placeholder = "Text">
+            </div>
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Order</label>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+
+                <input id="number-input" type="number" name="number-input" class = "form-control", placeholder = "Text">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Module Parent</label>
+            <select class="" name="">
+              <option value="">----------</option>
+              {%for m in mdls%}
+                <option value="{{m.code}}">{{m.name}}</option>
+              {%endfor%}
+            </select>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-3 col-sm-3 col-form-label" for="text-input">Task Event</label>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <input type="checkbox" name="" id="is-task-view"class="form-check-input">View</input>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Add</input>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Save</input>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Edit</input>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Delete</input>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Print</input>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Cancel</input>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Reset</input>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Find</input>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Controller/Folder</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input type="text"  placeholder = "Insert Folder Name Without Extension..." class = "form-control" name="text-input" id="text-input">
+            </div>
+            <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Module/File</label>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <input type="text"  placeholder = "Insert Folder Name Without Extension..." class = "form-control" name="text-input" id="text-input">
+            </div>
+        </div>
+
+
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="submit btn btn-sm btn-primary">
+            <i class="fa fa-dot-circle-o"></i> Submit
+        </button>
+
+
+        <button type="reset" class="reset btn btn-sm btn-danger">
+            <i class="fa fa-ban"></i> Reset
+        </button>
+
+
+    </div>
+
+        </form>
+
+    </div>
+
+
+{%endblock content%}
