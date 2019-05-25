@@ -15,8 +15,7 @@ class Tasks(models.Model):
     cancel_task = models.BooleanField(default=False)
     reset_task = models.BooleanField(default=False)
     find_task = models.BooleanField(default=False)
-    taskEvent = [view_task, add_task, save_task, edit_task, delete_task, print_task, cancel_task, reset_task, find_task]
 
 
     def __str__(self):
-        return self.name+self.code
+        return self.taskName+self.code

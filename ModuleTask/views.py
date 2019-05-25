@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Modules
+from django.shortcuts import redirect
+
 
 # Create your views here.
 def ModuleManagement(request):
@@ -31,17 +33,18 @@ def ModuleUpdate(request):
         M.save()
 
     context={'mdls': Modules.objects.all().order_by('order')}
-    return render(request,'ModuleTask/ModuleManagement.html',context)
+    return redirect('/ModuleTask/')
 
 def ModuleCreate(request):
-    return(request,'ModuleTask/ModuleCreate.html',{})
+    return render(request,'ModuleTask/ModuleCreate.html')
 
 def ModuleInsert(request):
     if(request.method=='POST'):
         OurRequest=request.POST
-        code='MDL_'+Modules.objects.all().count
-        M=Modules(name=OurRequest.get('element_name'),code=OurRequest.get('element_code'),order=OurRequest.get('element_order'))
+        code_='MDL_'+str(Modules.objects.latest('id').id+1)
+        M=Modules(name=OurRequest.get('element_name'),code=code_,order=OurRequest.get('element_order'))
         M.save()
 
     context={'mdls': Modules.objects.all().order_by('order')}
-    return render(request,'ModuleTask/ModuleManagement.html',context)
+    return redirect('/ModuleTask/')
+    #return render(request,'ModuleTask/ModuleManagement.html',context)

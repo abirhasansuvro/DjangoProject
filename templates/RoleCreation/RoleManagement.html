@@ -8,7 +8,7 @@
 
 
 
-    <h2 class="text-center" style="color:indianred">New Role Creation</h2>
+    <h2 class="text-center" style="color:indianred">Role Management</h2>
 {%endblock title%}
 
 {%block content%}
@@ -22,11 +22,11 @@
 
       <div class="btn-group m-auto" role="group" aria-label="Button group">
 
-          <a class="btn" href="#" id="newItem">
+          <a class="btn" href="{%url 'RoleCreate'%}" id="newItem">
               <i class="icon-docs"></i> Add
           </a>
           <a class="btn" href="#" id="editItem">
-              <i class="icon-docs"></i> Add or Edit By Month
+              <i class="icon-docs"></i> Assign Role to Task
           </a>
           <a class="btn" href="#" id="saveItem">
               <i class="icon-drawer"></i> Save
@@ -58,17 +58,6 @@
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                     <th scope="col">Role</th>
-                    <th scope="col">Module Name</th>
-                    <th scope="col">Task Name</th>
-                    <th scope="col">View</th>
-                    <th scope="col">Add</th>
-                    <th scope="col">Save</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                    <th scope="col">Print</th>
-                    <th scope="col">Cancel</th>
-                    <th scope="col">Reset</th>
-                    <th scope="col">Find</th>
                 </tr>
             </thead>
             <tbody>
@@ -81,6 +70,7 @@
                                     data-toggle="tooltip"
                                     data-placement="bottom"
                                     title="View"
+                                    onclick="location.href='{%url 'RoleView' md.id %}'"
                                     >
                                 <i class="icon-eye">
                                 </i>
@@ -92,6 +82,7 @@
                                     data-toggle="tooltip"
                                     data-placement="bottom"
                                     title="Edit"
+                                    onclick="location.href='{%url 'RoleEdit' md.id %}'"
                                     >
                                 <i class="icon-notebook">
                                 </i>
@@ -109,139 +100,7 @@
                                 </button>
 
                         </td>
-                        <td>{{md.Role.name}}</td>
-                        <td>{{md.Task.moduleName}}</td>
-                        <td>{{md.Task.taskName}}</td>
-                        {%if md.view_task %}
-
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-view" checked disabled>
-                                </div>
-                            </td>
-
-                        {%else%}
-
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-view" disabled>
-                                </div>
-                            </td>
-                        {%endif%}
-
-                        {%if md.add_task %}
-
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-add" checked disabled>
-                                </div>
-                            </td>
-                        {%else%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-add" disabled>
-                                </div>
-                            </td>
-                        {%endif%}
-
-                        {%if md.save_task%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-save" checked disabled>
-                                </div>
-                            </td>
-                        {%else%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-save" disabled>
-                                </div>
-                            </td>
-                        {%endif%}
-
-                        {%if md.edit_task%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-edit" checked disabled>
-                                </div>
-                            </td>
-
-                        {%else%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-edit" disabled>
-                                </div>
-                            </td>
-                        {%endif%}
-
-                        {%if md.delete_task%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-delete" checked disabled>
-                                </div>
-                            </td>
-                        {%else%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-delete" disabled>
-                                </div>
-                            </td>
-                        {%endif%}
-
-                        {%if md.print_task%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-print" checked disabled>
-                                </div>
-                            </td>
-                        {%else%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-print" disabled>
-                                </div>
-                            </td>
-                        {%endif%}
-
-                        {%if md.cancel_task%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-cancel" checked disabled>
-                                </div>
-                            </td>
-                        {%else%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-cancel" disabled>
-                                </div>
-                            </td>
-                        {%endif%}
-
-                        {%if md.reset_task%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-reset" checked disabled>
-                                </div>
-                            </td>
-                        {%else%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-reset" disabled>
-                                </div>
-                            </td>
-                        {%endif%}
-
-                        {%if md.find_task%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-find" checked disabled>
-                                </div>
-                            </td>
-                        {%else%}
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="task-find" disabled>
-                                </div>
-                            </td>
-                        {%endif%}
+                        <td>{{md.name}}</td>
 
 
                     </tr>

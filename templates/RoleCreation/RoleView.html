@@ -1,0 +1,160 @@
+{% extends "ModuleTask/base.html" %}
+
+{%block title%}
+
+<!-- Icons -->
+
+
+
+
+
+    <h2 class="text-center" style="color:indianred">View Role</h2>
+{%endblock title%}
+
+{%block content%}
+
+<div class="card">
+
+        <div class="card-body">
+
+            <div class="form-group row mb-3">
+                <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Role Name</label>
+                <div class="col-lg-3 col-md-4 col-sm-4">
+
+                    <input type="text" name="role_name" id="role_name" placeholder="text" value="{{R.name}}" readonly>
+                </div>
+
+            </div>
+
+
+            {%for m in mdls%}
+                <div class="m-4" style="width: auto">
+
+                    <strong><h4>{{m.name}}</h4></strong>
+                    {%for x in tsks%}
+                        {%ifequal x.moduleName m.name%}
+                        <div class="container-fluid d-flex flex-wrap flex-row justify-content-between">
+
+                            <div class="mr-auto p-3">{{x.taskName}}</div>
+                            <div class="form-check-inline d-flex flex-wrap">
+                              {%for d in detailRoles%}
+                                {%ifequal d.Task.taskName x.taskName %}
+                                {%if d.view_task %}
+
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="view_checked" id="element_task" name="element_task"checked disabled> View
+                                    </div>
+                                {% else %}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="view_checked" id="element_task" name="element_task" disabled> View
+                                    </div>
+                                {%endif%}
+
+                                {%if d.add_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="add_checked" id="element_task" name="element_task"checked disabled> Add
+                                    </div>
+                                {%else%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="add_checked" id="element_task" name="element_task" disabled> Add
+                                    </div>
+                                {%endif%}
+
+                                {%if d.save_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="save_checked" id="element_task" name="element_task"checked disabled> Save
+                                    </div>
+                                {%else%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="save_checked" id="element_task" name="element_task" disabled> Save
+                                    </div>
+                                {%endif%}
+
+                                {%if d.edit_task %}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="edit_checked" id="element_task" name="element_task"checked disabled> Edit
+                                    </div>
+
+                                {%else%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="edit_checked" id="element_task" name="element_task" disabled> Edit
+                                    </div>
+                                {%endif%}
+
+                                {%if d.delete_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="delete_checked" id="element_task" name="element_task"checked disabled> Delete
+                                    </div>
+                                {%else%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="delete_checked" id="element_task" name="element_task" disabled> Delete
+                                    </div>
+                                {%endif%}
+
+                                {%if d.print_task %}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="print_checked" id="element_task" name="element_task"checked disabled> Print
+                                    </div>
+                                {%else%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="print_checked" id="element_task" name="element_task" disabled> Print
+                                    </div>
+                                {%endif%}
+
+                                {%if d.cancel_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="cancel_checked" id="element_task" name="element_task"checked disabled> Cancel
+                                    </div>
+                                {%else%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="cancel_checked" id="element_task" name="element_task" disabled> Cancel
+                                    </div>
+                                {%endif%}
+
+                                {%if d.reset_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="reset_checked" id="element_task" name="element_task"checked disabled> Reset
+                                    </div>
+                                {%else%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="reset_checked" id="element_task" name="element_task" disabled> Reset
+                                    </div>
+                                {%endif%}
+
+                                {%if d.find_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="find_checked" id="element_task" name="element_task"checked disabled> Find
+                                    </div>
+                                {%else%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="find_checked" id="element_task" name="element_task"disabled> Find
+                                    </div>
+                                {%endif%}
+                                {%endifequal%}
+                                {%endfor%}
+                            </div>
+
+                        </div>
+                    {%endifequal%}
+                    {%endfor%}
+                </div>
+            {%endfor%}
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="submit btn btn-sm btn-primary">
+                <i class="fa fa-dot-circle-o"></i> Submit
+            </button>
+
+
+            <button type="reset" class="reset btn btn-sm btn-danger">
+                <i class="fa fa-ban"></i> Reset
+            </button>
+
+
+        </div>
+
+
+</div>
+
+
+{%endblock content%}

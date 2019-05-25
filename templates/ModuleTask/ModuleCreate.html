@@ -9,7 +9,7 @@
 
 
     <script src="{% static 'vendors/js/toastr.min.js'%}"></script>
-    <h2 class="text-center" style="color:indianred">Edit Module Here</h2>
+    <h2 class="text-center" style="color:indianred">Add New Module Here</h2>
     <style>
       .myButton {
 	-moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
@@ -68,7 +68,7 @@
               <label class="col-md-1 col-form-label" for="text-input">Module Name</label>
               <div class="col-md-4">
                   <!--@Html.TextBoxFor(m => m.ModuleName, new { @class = "form-control", placeholder = "Text", id = "text-input", name = "text-input", type = "text", @readonly = "readonly" })-->
-                  <input name="element_name" class="form-control" value="" placeholder="input the module name"/>
+                  <input name="element_name" class="form-control" value="" placeholder="Text"/>
 
 
               </div>
@@ -77,7 +77,7 @@
                 <label class="col-md-1 col-form-label" for="text-input">Module Order</label>
                 <div class="col-md-1">
                     <!--@Html.TextBoxFor(m => m.ModuleOrder, new { @class = "form-control", placeholder = "Number", id = "number-input", name = "number-input", type = "number", @readonly = "readonly" })-->
-                    <input name="element_order" class="form-control" value="" placeholder="input the module order"/>
+                    <input name="element_order" class="form-control" value="" placeholder="Number"/>
                 </div>
             </div>
 

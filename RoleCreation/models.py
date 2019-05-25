@@ -10,8 +10,8 @@ class Roles(models.Model):
     def __str__(self):
         return self.name
 class RoleDistribution(models.Model):
-    Role=models.OneToOneField(Roles,on_delete=models.CASCADE)
-    Task=models.OneToOneField(Tasks,on_delete=models.CASCADE)
+    Role=models.ForeignKey(Roles,on_delete=models.CASCADE)
+    Task=models.ForeignKey(Tasks,on_delete=models.CASCADE)
     view_task = models.BooleanField(default=False)
     add_task = models.BooleanField(default=False)
     save_task = models.BooleanField(default=False)

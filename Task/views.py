@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Tasks
 from ModuleTask.models import Modules
 
@@ -11,6 +11,65 @@ def TaskManagement(request):
 def TaskCreate(request):
     context={'mdls': Modules.objects.all()}
     return render(request,'Task/TaskCreate.html',context)
+
+def TaskInsert(request):
+    if(request.method=='POST'):
+        OurRequest=request.POST
+        code_='TSK_'+str(Tasks.objects.latest('id').id+1)
+        Task_list=OurRequest.getlist('element_event')
+        if 'view_checked' in Task_list:
+            view_T=1
+        else:
+            view_T=0
+
+        if 'add_checked' in Task_list:
+            add_T=1
+        else:
+            add_T=0
+
+        if 'save_checked' in Task_list:
+            save_T=1
+        else:
+            save_T=0
+
+        if 'edit_checked' in Task_list:
+            edit_T=1
+        else:
+            edit_T=0
+
+        if 'delete_checked' in Task_list:
+            delete_T=1
+        else:
+            delete_T=0
+
+        if 'print_checked' in Task_list:
+            print_T=1
+        else:
+            print_T=0
+
+        if 'cancel_checked' in Task_list:
+            cancel_T=1
+        else:
+            cancel_T=0
+
+        if 'reset_checked' in Task_list:
+            reset_T=1
+        else:
+            reset_T=0
+
+        if 'find_checked' in Task_list:
+            find_T=1
+        else:
+            find_T=0
+        T=Tasks(taskName=OurRequest.get('element_name'),code=code_,order=OurRequest.get('element_order'),
+        moduleName=OurRequest.get('element_module'),view_task=view_T,add_task=add_T,
+        save_task=save_T,edit_task=edit_T,delete_task=delete_T,
+        print_task=print_T,cancel_task=cancel_T,reset_task=reset_T,
+        find_task=find_T)
+        T.save()
+
+    context={'Tsks': Tasks.objects.all().order_by('order')}
+    return redirect('/Task/')
 
 def TaskView(request,id):
     try:
@@ -84,4 +143,4 @@ def TaskUpdate(request):
         T.save()
 
     context={'Tsks': Tasks.objects.all().order_by('order')}
-    return render(request,'Task/TaskManagement.html',context)
+    return redirect('/Task/')

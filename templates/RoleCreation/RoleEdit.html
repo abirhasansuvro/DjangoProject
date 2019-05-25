@@ -8,42 +8,44 @@
 
 
 
-    <h2 class="text-center" style="color:indianred">New Role Creation</h2>
+    <h2 class="text-center" style="color:indianred">Edit Role</h2>
 {%endblock title%}
 
 {%block content%}
 
 <div class="card">
-    <div class="card-header">
-        <strong>Please fill up the following information</strong>
-    </div>
-    <form action="RoleInsert/" method="post">
-      {%csrf_token%}
-
+        <form class="" action="RoleUpdate/" method="post">
+          {%csrf_token%}
         <div class="card-body">
 
             <div class="form-group row mb-3">
                 <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Role Name</label>
                 <div class="col-lg-3 col-md-4 col-sm-4">
 
-                    <input type="text" name="role_name" id="role_name" placeholder="text">
+                    <input type="text" name="role_name" id="role_name" placeholder="text" value="{{R.name}}" readonly>
                 </div>
 
             </div>
+
 
             {%for m in mdls%}
                 <div class="m-4" style="width: auto">
 
                     <strong><h4>{{m.name}}</h4></strong>
                     {%for x in tsks%}
-                        {%if x.moduleName == m.name%}
-
+                        {%ifequal x.moduleName m.name%}
                         <div class="container-fluid d-flex flex-wrap flex-row justify-content-between">
 
                             <div class="mr-auto p-3">{{x.taskName}}:</div>
                             <div class="form-check-inline d-flex flex-wrap">
-                                {%if x.view_task %}
+                              {%for d in detailRoles%}
+                                {%ifequal d.Task.taskName x.taskName %}
+                                {%if d.view_task   %}
 
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="view_checked" id="element_task" name="{{x.taskName}}_element_task" checked> View
+                                    </div>
+                                {%elif x.view_task and not d.view_task%}
                                     <div class="form-check pr-3">
                                         <input class="form-check-input" type="checkbox" value="view_checked" id="element_task" name="{{x.taskName}}_element_task"> View
                                     </div>
@@ -53,7 +55,11 @@
                                     </div>
                                 {%endif%}
 
-                                {%if x.add_task%}
+                                {%if d.add_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="add_checked" id="element_task" name="{{x.taskName}}_element_task" checked> Add
+                                    </div>
+                                {%elif x.add_task and not d.add_task%}
                                     <div class="form-check pr-3">
                                         <input class="form-check-input" type="checkbox" value="add_checked" id="element_task" name="{{x.taskName}}_element_task"> Add
                                     </div>
@@ -63,7 +69,11 @@
                                     </div>
                                 {%endif%}
 
-                                {%if x.save_task%}
+                                {%if d.save_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="save_checked" id="element_task" name="{{x.taskName}}_element_task" checked> Save
+                                    </div>
+                                {%elif x.save_task and not d.save_task%}
                                     <div class="form-check pr-3">
                                         <input class="form-check-input" type="checkbox" value="save_checked" id="element_task" name="{{x.taskName}}_element_task"> Save
                                     </div>
@@ -73,18 +83,25 @@
                                     </div>
                                 {%endif%}
 
-                                {%if x.edit_task %}
+                                {%if d.edit_task %}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="edit_checked" id="element_task" name="{{x.taskName}}_element_task" checked> Edit
+                                    </div>
+                                {%elif x.edit_task and not d.edit_task%}
                                     <div class="form-check pr-3">
                                         <input class="form-check-input" type="checkbox" value="edit_checked" id="element_task" name="{{x.taskName}}_element_task"> Edit
                                     </div>
-
                                 {%else%}
                                     <div class="form-check pr-3">
                                         <input class="form-check-input" type="checkbox" value="edit_checked" id="element_task" name="{{x.taskName}}_element_task" disabled> Edit
                                     </div>
                                 {%endif%}
 
-                                {%if x.delete_task%}
+                                {%if d.delete_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="delete_checked" id="element_task" name="{{x.taskName}}_element_task" checked> Delete
+                                    </div>
+                                {%elif x.delete_task and not d.delete_task%}
                                     <div class="form-check pr-3">
                                         <input class="form-check-input" type="checkbox" value="delete_checked" id="element_task" name="{{x.taskName}}_element_task"> Delete
                                     </div>
@@ -94,7 +111,11 @@
                                     </div>
                                 {%endif%}
 
-                                {%if x.print_task %}
+                                {%if d.print_task %}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="print_checked" id="element_task" name="{{x.taskName}}_element_task" checked> Print
+                                    </div>
+                                {%elif x.print_task and not d.print_task%}
                                     <div class="form-check pr-3">
                                         <input class="form-check-input" type="checkbox" value="print_checked" id="element_task" name="{{x.taskName}}_element_task"> Print
                                     </div>
@@ -104,7 +125,11 @@
                                     </div>
                                 {%endif%}
 
-                                {%if x.cancel_task%}
+                                {%if d.cancel_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="cancel_checked" id="element_task" name="{{x.taskName}}_element_task" checked> Cancel
+                                    </div>
+                                {%elif x.cancel_task and not d.cancel_task%}
                                     <div class="form-check pr-3">
                                         <input class="form-check-input" type="checkbox" value="cancel_checked" id="element_task" name="{{x.taskName}}_element_task"> Cancel
                                     </div>
@@ -114,7 +139,11 @@
                                     </div>
                                 {%endif%}
 
-                                {%if x.reset_task%}
+                                {%if d.reset_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="reset_checked" id="element_task" name="{{x.taskName}}_element_task" checked> Reset
+                                    </div>
+                                {%elif x.reset_task and not d.reset_task%}
                                     <div class="form-check pr-3">
                                         <input class="form-check-input" type="checkbox" value="reset_checked" id="element_task" name="{{x.taskName}}_element_task"> Reset
                                     </div>
@@ -124,7 +153,11 @@
                                     </div>
                                 {%endif%}
 
-                                {%if x.find_task%}
+                                {%if d.find_task%}
+                                    <div class="form-check pr-3">
+                                        <input class="form-check-input" type="checkbox" value="find_checked" id="element_task" name="{{x.taskName}}_element_task" checked> Find
+                                    </div>
+                                {%elif x.find_task and not d.find_task%}
                                     <div class="form-check pr-3">
                                         <input class="form-check-input" type="checkbox" value="find_checked" id="element_task" name="{{x.taskName}}_element_task"> Find
                                     </div>
@@ -133,10 +166,12 @@
                                         <input class="form-check-input" type="checkbox" value="find_checked" id="element_task" name="{{x.taskName}}_element_task"disabled> Find
                                     </div>
                                 {%endif%}
+                                {%endifequal%}
+                                {%endfor%}
                             </div>
 
                         </div>
-                    {%endif%}
+                    {%endifequal%}
                     {%endfor%}
                 </div>
             {%endfor%}
@@ -154,8 +189,7 @@
 
         </div>
 
-    </form>
-
+        </form>
 </div>
 
 

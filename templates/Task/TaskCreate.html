@@ -20,8 +20,8 @@
     <div class="card-header">
         <strong>Please fill up the following information</strong>
     </div>
-    <form method="POST">
-
+    <form method="POST" action="TaskInsert/">
+      {%csrf_token%}
     <div class="card-body">
 
 
@@ -29,18 +29,18 @@
             <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Name</label>
             <div class="col-lg-4 col-md-4 col-sm-4">
 
-                <input id="text-input" type="text" name="text-input" class = "form-control", placeholder = "Text">
+                <input id="element_name" type="text" name="element_name" class = "form-control", placeholder = "Text">
             </div>
             <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Task Order</label>
             <div class="col-lg-1 col-md-1 col-sm-1">
 
-                <input id="number-input" type="number" name="number-input" class = "form-control", placeholder = "Text">
+                <input id="element_order" type="number" name="element_order" class = "form-control", placeholder = "Text">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-lg-2 col-md-2 col-sm-2 col-form-label" for="text-input">Module Parent</label>
-            <select class="" name="">
+            <select class="" name="element_module">
               <option value="">----------</option>
               {%for m in mdls%}
                 <option value="{{m.code}}">{{m.name}}</option>
@@ -52,31 +52,31 @@
         <div class="form-group row">
             <label class="col-lg-2 col-md-3 col-sm-3 col-form-label" for="text-input">Task Event</label>
             <div class="col-lg-1 col-md-1 col-sm-1">
-                <input type="checkbox" name="" id="is-task-view"class="form-check-input">View</input>
+                <input type="checkbox" name="element_event" value="view_checked" id="is-task-view"class="form-check-input">View</input>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
-                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Add</input>
+                <input type="checkbox" name="element_event" value="add_checked" id="is-task-view"class="form-check-input">Add</input>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
-                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Save</input>
+                <input type="checkbox" name="element_event"  value="save_checked" id="is-task-view"class="form-check-input">Save</input>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
-                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Edit</input>
+                <input type="checkbox" name="element_event" value="edit_checked" id="is-task-view"class="form-check-input">Edit</input>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
-                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Delete</input>
+                <input type="checkbox" name="element_event" value="delete_checked" id="is-task-view"class="form-check-input">Delete</input>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
-                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Print</input>
+                <input type="checkbox" name="element_event" value="print_checked" id="is-task-view"class="form-check-input">Print</input>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
-                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Cancel</input>
+                <input type="checkbox" name="element_event" id="is-task-view" value="cancel_checked" class="form-check-input">Cancel</input>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
-                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Reset</input>
+                <input type="checkbox" name="element_event" id="is-task-view" value="reset_checked"class="form-check-input">Reset</input>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
-                <input type="checkbox" name="" id="is-task-view"class="form-check-input">Find</input>
+                <input type="checkbox" name="element_event" id="is-task-view" value="find_checked"class="form-check-input">Find</input>
             </div>
         </div>
 
