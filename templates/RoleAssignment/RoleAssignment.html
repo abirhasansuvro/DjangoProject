@@ -1,0 +1,25 @@
+{% extends "ModuleTask/base.html" %}
+
+{%block title%}
+    <h2 class="text-center" style="color:indianred">Role Asignement</h2>
+{%endblock title%}
+
+{%block content%}
+<div class="card" style="margin-bottom: 0">
+    <ol class="breadcrumb ml-auto mb-auto mr-auto mt-auto" id="breadcrumb_nav">
+      <div class="btn-group m-auto" role="group" aria-label="Button group">
+          <a class="btn" href="{%url 'NewRoleAssign'%}" id="newItem">
+              <i class="icon-docs"></i> Add
+          </a>
+      </div>
+    </ol>
+    {%for u in users%}
+      <p>
+        {{u.UserName}}---{{u.role.name}}
+      </p>
+    {% endfor %}
+</div>
+
+
+
+{%endblock %}

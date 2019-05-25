@@ -24,4 +24,8 @@ urlpatterns = [
     path('Task/',include('Task.urls')),
 
     path('RoleCreation/',include('RoleCreation.urls')),
+
+    path('RoleAssignment/',include('RoleAssignment.urls')),
+
+    path('Log/',include('LogWithAudit.urls')),
 ]

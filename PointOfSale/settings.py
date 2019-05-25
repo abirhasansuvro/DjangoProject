@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'ModuleTask.apps.ModuletaskConfig',
     'Task.apps.TaskConfig',
     'RoleCreation.apps.RolecreationConfig',
+    'RoleAssignment',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -135,3 +136,6 @@ STATICFILES_DIRS = (
 )
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT=os.path.join(BASE_DIR,"media")
+MEDIA_URL='/media/'

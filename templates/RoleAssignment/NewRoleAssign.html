@@ -1,0 +1,76 @@
+{% extends "ModuleTask/base.html" %}
+
+{%block title%}
+    <h2 class="text-center" style="color:indianred">New Role Assign</h2>
+{%endblock title%}
+
+{%block content%}
+<style>
+  .form-control {
+    display: block !important;
+  }
+</style>
+  <div class="container" style="padding-top: 50px;">
+    <form style="width:100%;" action="RoleInsert/" method="POST">
+      {%csrf_token%}
+      <div class="row">
+        <div class="col-7">
+          <div style="width: 450px;">
+              <div class="form-group">
+                <label for="userName">Username</label>
+                <input type="text" class="form-control" id="userName" name="userName"  placeholder="Enter your username">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="displayName">Display Name</label>
+                <input type="text" class="form-control" id="displayName" name="displayName"  placeholder="IamAwsome">
+              </div>
+              <div class="form-group">
+                <label for="useremail">Email Address</label>
+                <input type="email" class="form-control" id="useremail" name="useremail" placeholder="you@example.com">
+              </div>
+              <div class="form-group">
+                <label for="mobileno">Mobile Number</label>
+                <input type="number" class="form-control" id="mobileno" name="mobileno" placeholder="01XXXXXXXXX">
+              </div>
+          </div>
+        </div>
+        <div class="col-5" style="display:flex; flex-direction:column;justify-content:center;">
+          <div class="form-group">
+            <label for="userimage">Upload Avatar</label>
+            <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control-file"  id="userimage" name="userimage">
+          </div>
+          <div class="form-group">
+            <label for="roleselect">Select Roles</label>
+            <select id="roleselect" name="roleselect" class="form-control" multiple style="width: 300px;">
+              {%for r in roles%}
+              <option value="{r.name}">{{r.name}}</option>
+    					{%endfor%}
+            </select>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+
+
+
+
+  <script type="text/javascript">
+    $(function () {
+        var $select = $('#roleselect');
+        if ($select.data('selectator') === undefined) {
+          $select.selectator({
+            showAllOptionsOnFocus: true,
+            searchFields: 'value text subtitle right'
+          });
+        }
+    });
+  </script>
+{%endblock %}
