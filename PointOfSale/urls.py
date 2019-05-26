@@ -28,4 +28,6 @@ urlpatterns = [
     path('RoleAssignment/',include('RoleAssignment.urls')),
 
     path('Log/',include('LogWithAudit.urls')),
+
+    path('shopbranchoutlet/', include('Shopbranchoutlet.urls'))
 ]

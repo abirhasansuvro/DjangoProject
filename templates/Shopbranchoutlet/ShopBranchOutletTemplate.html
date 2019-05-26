@@ -1,0 +1,77 @@
+{% extends "ModuleTask/base.html" %}
+
+{%block title%}
+    <h2 class="text-center" style="color:indianred">Shop/Branch/Outlet Management</h2>
+{%endblock title%}
+
+{%block content%}
+<div class="card" style="margin-bottom: 0">
+    <ol class="breadcrumb ml-auto mb-auto mr-auto mt-auto" id="breadcrumb_nav">
+      <div class="btn-group m-auto" role="group" aria-label="Button group">
+          <a class="btn" href="{%url 'ShopBranchOutletCreate' %}" id="newItem">
+              <i class="icon-docs"></i> Add
+          </a>
+      </div>
+    </ol>
+</div>
+
+<div class="table-responsive-sm">
+
+    <table id="dtBasicExample" data-pagination="true" class="table table-hover table-dark" style="margin-bottom: 0" >
+        <thead class="bg-blue" style="color:white">
+            <tr>
+                <th scope="col">View</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sbo in sbos %}
+                <tr>
+                    <td>
+                        <button type="button"
+                                class="btn btn-light"
+                                data-toggle="tooltip"
+                                data-placement="bottom"
+                                title="View"
+                                onclick="location.href='{%url 'ShopBranchOutletDetails' sbo.id %}'"
+                                >
+                            <i class="icon-eye">
+                            </i>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button"
+                                class="btn btn-light"
+                                data-toggle="tooltip"
+                                data-placement="bottom"
+                                title="Edit"
+                                onclick="location.href='#'"
+                                >
+                            <i class="icon-notebook">
+                            </i>
+                        </button>
+                    </td>
+                    <td>
+
+                            <button type="submit"
+                                    class="btn btn-light"
+                                    data-toggle="tooltip"
+                                    data-placement="bottom"
+                                    title="Delete">
+                                <i class="icon-trash">
+                                </i>
+                            </button>
+
+                    </td>
+                    <td>{{sbo.name}}</td>
+
+
+                </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
+</div>
+{%endblock %}

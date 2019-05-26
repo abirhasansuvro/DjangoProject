@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'Task.apps.TaskConfig',
     'RoleCreation.apps.RolecreationConfig',
     'RoleAssignment',
+    'Shopbranchoutlet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

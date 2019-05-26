@@ -1,0 +1,57 @@
+{% extends "ModuleTask/base.html" %}
+
+{%block title%}
+    <h2 class="text-center" style="color:indianred">New Shop/Branch/Outlet Create</h2>
+{%endblock title%}
+
+{%block content%}
+<div class="container" style="padding-top: 50px;">
+    <form action="sboinsert/" method="post" style="display:flex;justify-content:center;">
+      {%csrf_token%}
+        <div style="width: 700px;">
+            <div class="form-group row">
+              <label for="sboName" class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-form-label">Name</label>
+              <input type="text" class="form-control col-sm-12 col-md-9 col-lg-9 col-xl-9" id="sboName" name="sboName" placeholder="Enter shop/branch/outlet name">
+            </div>
+            <div class="form-group row">
+              <label for="sboLocation" class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-form-label">Location</label>
+              <textarea row="2" class="form-control col-sm-12 col-md-9 col-lg-9 col-xl-9" id="sboLocation"  name="sboLocation" placeholder="Enter shop/branch/outlet location"></textarea>
+            </div>
+            <div class="form-group row">
+              <label for="sboNoOfEmployee" class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-form-label">No of Employees</label>
+              <input type="number" min ="0" class="form-control col-sm-12 col-md-9 col-lg-9 col-xl-9" id="sboNoOfEmployee"  name="sboNoOfEmployee" placeholder="Enter number of employees">
+            </div>
+            <div class="form-group row">
+              <label for="sboArea" class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-form-label">Area(square feet)</label>
+              <input type="number" step=".01" min ="0" class="form-control col-sm-12 col-md-9 col-lg-9 col-xl-9" id="sboArea"  name="sboArea" placeholder="Enter area in square feet">
+            </div>
+            <div class="form-group row">
+              <label for="typeselect" class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-form-label">Select Type(s)</label>
+              <select id="typeselect" name="typeselect" class="form-control col-sm-12 col-md-9 col-lg-9 col-xl-9" multiple style="width: 300px;">
+                <option value="b">Branch</option>
+      					<option value="s">Shop</option>
+      					<option value="o">Outlet</option>
+              </select>
+            </div>
+            <div style="display:flex; justify-content:center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+     </form>
+  </div>
+
+
+
+
+  <script type="text/javascript">
+    $(function () {
+        var $select = $('#typeselect');
+        if ($select.data('selectator') === undefined) {
+          $select.selectator({
+            showAllOptionsOnFocus: true,
+            searchFields: 'value text subtitle right'
+          });
+        }
+    });
+  </script>
+{%endblock %}

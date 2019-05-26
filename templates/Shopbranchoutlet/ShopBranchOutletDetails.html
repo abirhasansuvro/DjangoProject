@@ -1,0 +1,64 @@
+{% extends "ModuleTask/base.html" %}
+
+{%block title%}
+    <h2 class="text-center" style="color:indianred">{{ sbo.name }}</h2>
+{%endblock title%}
+
+{%block content%}
+  <div class="container" style="display:flex; justify-content:center; padding-top:50px;">
+    <div style="width: 500px; background:white; padding: 10px;box-shadow: 0px 0px 2px #bdbdbd;">
+      <div class="row" style="width:100%">
+        <div class="col-sm-4">
+          <p style="font-weight:bold">Name:</p>
+        </div>
+        <div class="col-sm-8">
+          <p>{{sbo.name}}</p>
+        </div>
+      </div>
+      <div class="row" style="width:100%">
+        <div class="col-sm-4">
+          <p style="font-weight:bold">No of Employees:</p>
+        </div>
+        <div class="col-sm-8">
+          <p>{{sbo.no_of_employees}}</p>
+        </div>
+      </div>
+      <div class="row" style="width:100%">
+        <div class="col-sm-4">
+          <p style="font-weight:bold">Sqaure feet:</p>
+        </div>
+        <div class="col-sm-8">
+          <p>{{sbo.area_square_ft}}</p>
+        </div>
+      </div>
+      <div class="row" style="width:100%">
+        <div class="col-sm-4">
+          <p style="font-weight:bold">Location:</p>
+        </div>
+        <div class="col-sm-8">
+          <p>{{sbo.location}}</p>
+        </div>
+      </div>
+      <div class="row" style="width:100%">
+        <div class="col-sm-4">
+          <p style="font-weight:bold">Type:</p>
+        </div>
+        <div class="col-sm-8">
+          <div >
+            {% if sbo.is_branch %}
+            <div style="display:inline-block; background:#3e3ebd; color:white; padding: 4px; border-radius:5px;">Branch</div>
+            {%endif %}
+            {% if sbo.is_shop %}
+            <div style="display:inline-block; background:#3e3ebd; color:white; padding: 4px; border-radius:5px;">Shop</div>
+            {%endif %}
+            {% if sbo.is_outlet %}
+            <div style="display:inline-block; background:#3e3ebd; color:white; padding: 4px; border-radius:5px;">Outlet</div>
+            {%endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{%endblock %}
